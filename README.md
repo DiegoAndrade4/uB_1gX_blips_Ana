@@ -1,10 +1,10 @@
 
 # uB_1gX_blips_Ana
-<<<<<<< HEAD
+
 Macros for signal event selection and optimization of hadronic boundary for 0n/Nn split.  BNB Nu and EXT unb. 
-=======
+
 Macros for signal/sideband event selection and optimization of hadronic boundary for 0n/Nn split.
->>>>>>> 82d21e41df363a197ddabc522b6adeb5c268d074
+
 
 
 ## Description and usage
