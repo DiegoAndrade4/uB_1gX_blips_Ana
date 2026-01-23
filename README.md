@@ -1,6 +1,6 @@
 
 # uB_1gX_blips_Ana
-Macros for signal/sideband event selection and optimization of hadronic boundary for 0n/Nn split.
+Macros for signal event selection and optimization of hadronic boundary for 0n/Nn split.  BNB Nu and EXT unb. 
 
 
 ## Description and usage
