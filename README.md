@@ -3,8 +3,11 @@
 
 Macros for signal event selection and optimization of hadronic boundary for 0n/Nn split.  BNB Nu and EXT unb. 
 
+<<<<<<< HEAD
 Macros for signal/sideband event selection and optimization of hadronic boundary for 0n/Nn split.
 
+=======
+>>>>>>> 86116035b8be54e5d891bd23c391440a43dfd5fd
 
 
 ## Description and usage
