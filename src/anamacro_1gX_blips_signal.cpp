@@ -421,9 +421,8 @@ TH1F* h_Blip_signal_over_regB_cosangle  = new TH1F("h_Blip_signal_over_regB_cosa
 
 
 
-    // --- Event loop ---
-   
-    int WC_0p_wBB = 0,  WC_Np_wBB = 0; 
+    // --- Event loop ---   
+   int WC_0p_wBB = 0,  WC_Np_wBB = 0; 
     int signal_events = 0;
     int NoSigNorBkg = 0; int NoSigNorBkg0n = 0; int NoSigNorBkgNn = 0; 
     int dummycounter = 0;  
@@ -839,8 +838,7 @@ TH1F* h_Blip_signal_over_regB_cosangle  = new TH1F("h_Blip_signal_over_regB_cosa
 			                        //std::cout<<"Signal Event: R/S/E: "<<run<<"/"<<subrun<<"/"<<event<< std::endl; 
                                     //std::cout<<"With:"<< Get_Nproton(numu_cc_flag , kine_energy_particle,  kine_particle_type)<<" reconstructed protons"<< std::endl;  
 
-                                    N_rec_protons = AddBacktrackedBlips ? WC_N_rec_protons + n_sig_all_regB_blips  : WC_N_rec_protons;
-				    
+                                    N_rec_protons = AddBacktrackedBlips ? WC_N_rec_protons + n_sig_all_regB_blips  : WC_N_rec_protons;				    
                                                                           
 
                                     h_1gX_Nprotons->Fill( N_rec_protons); 

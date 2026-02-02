@@ -26,7 +26,7 @@ Float_t reco_showerMomentum[4];
  Float_t truth_muonMomentum[4];
 Int_t truth_Npi0;
 
-
+Int_t mc_nu_intType; // interaction type
 
 
 
@@ -79,7 +79,7 @@ void setBranchesPFEval(TTree *tree){
 
 
 
-/*
+
 
     //if (tree->GetBranch("truth_Ntrack")){
     //flag_pf_truth = true;
@@ -97,8 +97,11 @@ void setBranchesPFEval(TTree *tree){
     tree->SetBranchAddress("truth_endXYZT", &truth_endXYZT);
     tree->SetBranchAddress("truth_startMomentum", &truth_startMomentum);
     tree->SetBranchAddress("truth_endMomentum", &truth_endMomentum);
-    tree->SetBranchAddress("truth_daughters", &truth_daughters);
-    tree->SetBranchAddress("fMC_trackPosition", &fMC_trackPosition);
+    tree->SetBranchAddress("truth_daughters", &truth_daughters); 
+
+    tree->SetBranchAddress("mc_nu_intType", &mc_nu_intType);
+
+/*    tree->SetBranchAddress("fMC_trackPosition", &fMC_trackPosition);
 
     tree->SetBranchAddress("mc_isnu", &mc_isnu);
     tree->SetBranchAddress("mc_nGeniePrimaries", &mc_nGeniePrimaries);
@@ -117,11 +120,11 @@ void setBranchesPFEval(TTree *tree){
     tree->SetBranchAddress("mc_nu_Theta", &mc_nu_Theta);
     tree->SetBranchAddress("mc_nu_pos", &mc_nu_pos);
     tree->SetBranchAddress("mc_nu_mom", &mc_nu_mom);
-
+*/
 //  }
 
 
-*/
+
 
 
 

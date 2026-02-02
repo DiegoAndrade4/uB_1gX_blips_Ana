@@ -136,7 +136,7 @@ bool is_0p(float numu_cc_flag ,const std::vector<float> * kine_energy_particle, 
 //===============================================================
 /*
 //bool is_true_0p(PFevalInfo& pfeval){
-bool is_true_0p(int truth_Ntrack,  ){
+bool is_true_0p(int truth_Ntrack  ){
     for(size_t i=0; i<pfeval.truth_Ntrack; i++){
       if(pfeval.truth_mother[i] != 0) continue;
       if(pfeval.truth_pdg[i] != 2212) continue;
@@ -146,6 +146,76 @@ bool is_true_0p(int truth_Ntrack,  ){
   return true;
 }
 */
+
+
+
+/*
+//Only True0p
+
+bool is_true_0p(int truth_Ntrack  ){
+    for(size_t i=0; i<truth_Ntrack; i++){
+      if(truth_mother[i] != 0) continue;
+      if(truth_pdg[i] != 2212) continue;
+      if(truth_startMomentum[i][3] - 0.938272 < 0.035) continue; //Erin: CHANGE, no proton threshold
+								//Diego : Lower threshold 0.020 GeV
+      return false;
+    }
+  return true;
+}
+*/ 
+//=================================================================
+// With FV check
+bool is_true_0p(Int_t truth_Ntrack) {
+    
+    // Define fiducial volume boundaries
+    Float_t xMin = 0.0,   xMax = 256.0;
+    Float_t yMin = -116.5, yMax = 116.5;
+    Float_t zMin = 0.0,   zMax = 1036.0;
+    
+    for(Int_t i = 0; i < truth_Ntrack; i++) {
+        // Skip if not primary particle
+        if(truth_mother[i] != 0) continue;
+        
+        // Skip if not proton (PDG 2212)
+        if(truth_pdg[i] != 2212) continue;
+        
+        // Skip if below kinetic energy threshold (35 MeV)
+        Float_t KE = (truth_startMomentum[i][3] - 0.938272) * 1000.0; // Convert to MeV
+        if(KE < 35.0) continue;
+        
+        // Check if track is fully contained in fiducial volume
+        Float_t xStart = truth_startXYZT[i][0];
+        Float_t yStart = truth_startXYZT[i][1];
+        Float_t zStart = truth_startXYZT[i][2];
+        
+        Float_t xEnd = truth_endXYZT[i][0];
+        Float_t yEnd = truth_endXYZT[i][1];
+        Float_t zEnd = truth_endXYZT[i][2];
+        
+        // Check containment of both start and end points
+        bool startContained = (xStart > xMin && xStart < xMax &&
+                              yStart > yMin && yStart < yMax &&
+                              zStart > zMin && zStart < zMax);
+        
+        bool endContained = (xEnd > xMin && xEnd < xMax &&
+                            yEnd > yMin && yEnd < yMax &&
+                            zEnd > zMin && zEnd < zMax);
+        
+        // If we find a contained proton above threshold, return false (not 0p)
+        if(startContained && endContained) {
+            return false;
+        }
+    }
+    
+    return true;  // No contained protons found -> is 0p
+}
+
+
+
+
+
+
+
 
 //================================================================
 
